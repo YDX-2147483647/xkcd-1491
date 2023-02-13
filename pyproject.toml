@@ -1,0 +1,23 @@
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "Y.D.X.", email = "73375426+YDX-2147483647@users.noreply.github.com"},
+]
+dependencies = [
+    "matplotlib>=3.6.3",
+    "numpy>=1.24.2",
+    "polars>=0.16.4",
+    "ruamel.yaml>=0.17.21",
+]
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+[tool.pdm.scripts]
+fmt = "black ."
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=23.1.0",
+]

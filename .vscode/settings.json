@@ -1,0 +1,8 @@
+{
+    "python.analysis.typeCheckingMode": "basic",
+    "yaml.schemas": {
+        "publications.schema.json": [
+            "data/series.yaml"
+        ]
+    }
+}

@@ -1,0 +1,78 @@
+{
+    "$schema": "https://json-schema.org/draft-07/schema",
+    "title": "Dates of publications",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "required": [
+            "publication",
+            "series"
+        ],
+        "properties": {
+            "publication": {
+                "title": "Name of the publication or franchise",
+                "type": "string"
+            },
+            "author": {
+                "type": "string"
+            },
+            "ref": {
+                "title": "A link for reference",
+                "type": "string",
+                "format": "uri"
+            },
+            "series": {
+                "title": "A list of events",
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "required": [
+                        "written_in",
+                        "set_in"
+                    ],
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "written_in": {
+                            "oneOf": [
+                                {
+                                    "type": "integer",
+                                    "description": "An ISO 8601 flavour year. (1 BC = +0000, 2 BC = −0001)"
+                                },
+                                {
+                                    "type": "array",
+                                    "title": "[<start>, <end>]",
+                                    "maxItems": 2,
+                                    "minItems": 2,
+                                    "items": {
+                                        "type": "integer",
+                                        "description": "An ISO 8601 flavour year. (1 BC = +0000, 2 BC = −0001)"
+                                    }
+                                }
+                            ]
+                        },
+                        "set_in": {
+                            "oneOf": [
+                                {
+                                    "type": "integer",
+                                    "description": "An ISO 8601 flavour year. (1 BC = +0000, 2 BC = −0001)"
+                                },
+                                {
+                                    "type": "array",
+                                    "title": "[<start>, <end>]",
+                                    "maxItems": 2,
+                                    "minItems": 2,
+                                    "items": {
+                                        "type": "integer",
+                                        "description": "An ISO 8601 flavour year. (1 BC = +0000, 2 BC = −0001)"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
