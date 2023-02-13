@@ -26,6 +26,13 @@ class Publication:
     series: list[Event]
 
 
+def tuple_or_int(value: int | tuple[int, ...] | list[int]) -> int | tuple[int, ...]:
+    if isinstance(value, list):
+        return tuple(value)
+    else:
+        return value
+
+
 def _load_events(file: Path) -> list[Publication]:
     events = pl.scan_csv(
         file,
@@ -50,12 +57,21 @@ def _load_events(file: Path) -> list[Publication]:
 def _load_series(file: Path) -> list[Publication]:
     publications = YAML(typ="safe").load(file.read_text(encoding="utf-8"))
 
-    for p in publications:
-        p["series"] = [Event(**e) for e in p["series"]]
-        p["name"] = p["publication"]
-        del p["publication"]
-
-    return [Publication(**p) for p in publications]
+    return [
+        Publication(
+            author=p.get("author"),
+            name=p["publication"],
+            series=[
+                Event(
+                    name=e.get("name"),
+                    written_in=tuple_or_int(e["written_in"]),
+                    set_in=tuple_or_int(e["set_in"]),
+                )
+                for e in p["series"]
+            ],
+        )
+        for p in publications
+    ]
 
 
 def _load_data(file: Path) -> list[Publication]:
