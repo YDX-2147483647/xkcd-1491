@@ -7,6 +7,8 @@ from typing import TYPE_CHECKING
 import polars as pl
 from ruamel.yaml import YAML
 
+from .util import average, tuple_or_int
+
 if TYPE_CHECKING:
     from pathlib import Path
     from typing import Iterable
@@ -18,19 +20,20 @@ class Event:
     written_in: int | tuple[int, int]
     set_in: int | tuple[int, int]
 
+    @property
+    def written_in_average(self) -> float | int:
+        return average(self.written_in)
+
+    @property
+    def set_in_average(self) -> float | int:
+        return average(self.set_in)
+
 
 @dataclass
 class Publication:
     name: str
     author: str | None
     series: list[Event]
-
-
-def tuple_or_int(value: int | tuple[int, ...] | list[int]) -> int | tuple[int, ...]:
-    if isinstance(value, list):
-        return tuple(value)
-    else:
-        return value
 
 
 def _load_events(file: Path) -> list[Publication]:
