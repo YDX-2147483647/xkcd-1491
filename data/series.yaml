@@ -50,15 +50,17 @@
 - publication: 流浪地球
   author: 刘慈欣
   series:
-    - name: §1 刹车时代
-      written_in: 2000
-      set_in: [2374, 2380]
-    - name: §2 逃逸时代
-      written_in: 2000
-      set_in: [2382, 2395]
-    - name: §3 叛乱
-      written_in: 2000
-      set_in: [2400, 2400]
-    - name: §4 流浪时代
-      written_in: 2000
-      set_in: 2450
+    - written_in: 2000
+      set_in: [2374, 2450]
+    # - name: §1 刹车时代
+    #   written_in: 2000
+    #   set_in: [2374, 2380]
+    # - name: §2 逃逸时代
+    #   written_in: 2000
+    #   set_in: [2382, 2395]
+    # - name: §3 叛乱
+    #   written_in: 2000
+    #   set_in: [2400, 2400]
+    # - name: §4 流浪时代
+    #   written_in: 2000
+    #   set_in: 2450

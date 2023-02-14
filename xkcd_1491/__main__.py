@@ -9,10 +9,17 @@ from .xkcd import xkcd
 data = load_data(Path("data").iterdir())
 
 with rc_context(xkcd):
-    fig, ax = subplots(layout="constrained")
+    fig, ax = subplots(
+        layout="constrained",
+        figsize=(8, 12),
+    )
 
     ax.set_xlabel("written in".title())
-    ax.set_ylabel("set in".title())
+    ax.set_ylabel("set in - written in".title())
+
+    ax.set_yscale("symlog")
+
+    ax.grid(visible=True)
 
     for publication in data:
         color = next(palette)
@@ -27,7 +34,10 @@ with rc_context(xkcd):
                 # todo
                 pass
 
-            position = (event.written_in_average, event.set_in_average)
+            position = (
+                event.written_in_average,
+                event.set_in_average - event.written_in_average,
+            )
             label = event.name or publication.name
 
             ax.plot(
@@ -48,7 +58,7 @@ with rc_context(xkcd):
         else:
             ax.plot(
                 [e.written_in_average for e in publication.series],
-                [e.set_in_average for e in publication.series],
+                [e.set_in_average - e.written_in_average for e in publication.series],
                 alpha=0.5,
                 color=color,
             )
@@ -61,8 +71,11 @@ with rc_context(xkcd):
                     # todo
                     pass
 
-                position = (event.written_in_average, event.set_in_average)
-                label = f"{event.name}\n{publication.name}"
+                position = (
+                    event.written_in_average,
+                    event.set_in_average - event.written_in_average,
+                )
+                label = event.name or publication.name
 
                 ax.annotate(
                     text=label,
@@ -70,9 +83,5 @@ with rc_context(xkcd):
                     verticalalignment="top",
                     color=color,
                 )
-
-    ax.set_xlim(1900, 2023)
-    ax.set_ylim(1900, 2200)
-    ax.grid(visible=True)
 
 show()
