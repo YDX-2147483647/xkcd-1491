@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from adjustText import adjust_text
 from matplotlib.pyplot import rc_context, show, subplots
 
 from .data import load_data
@@ -20,6 +21,8 @@ with rc_context(xkcd):
     ax.set_yscale("symlog")
 
     ax.grid(visible=True)
+
+    texts = []
 
     for publication in data:
         color = next(palette)
@@ -47,13 +50,12 @@ with rc_context(xkcd):
                 alpha=0.8,
                 color=color,
             )
-            ax.annotate(
-                text=label,
-                xy=position,
-                xytext=(5, -5),
-                textcoords="offset points",
-                verticalalignment="top",
-                color=color,
+            texts.append(
+                ax.annotate(
+                    text=label,
+                    xy=position,
+                    color=color,
+                )
             )
         else:
             ax.plot(
@@ -77,11 +79,22 @@ with rc_context(xkcd):
                 )
                 label = event.name or publication.name
 
-                ax.annotate(
-                    text=label,
-                    xy=position,
-                    verticalalignment="top",
-                    color=color,
+                texts.append(
+                    ax.annotate(
+                        text=label,
+                        xy=position,
+                        color=color,
+                    )
                 )
+
+    adjust_text(
+        texts,
+        lim=15,
+        arrowprops=dict(
+            color="gray",
+            alpha=0.4,
+            arrowstyle="-",
+        ),
+    )
 
 show()

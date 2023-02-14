@@ -28,7 +28,6 @@ xkcd = {
         "xkcd",
         "Source Han Sans CN",
     ],
-    "font.size": 14.0,
     "path.sketch": (
         1,  # scale
         100,  # length
