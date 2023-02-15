@@ -25,8 +25,10 @@ from matplotlib.patheffects import withStroke
 
 xkcd = {
     "font.family": [
-        "xkcd",
+        "xkcd",  # https://github.com/ipython/xkcd-font/blob/master/xkcd/build/xkcd.otf
+        "HYRuiYunXiuWu",  # 汉仪瑞云袖舞 https://www.hanyi.com.cn/productdetail?id=8191&type=0
         "Source Han Sans CN",
+        "STKaiti",
         "sans-serif",
     ],
     "path.sketch": (
