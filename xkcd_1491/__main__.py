@@ -32,6 +32,7 @@ with rc_context(xkcd):
     adjust_text(
         texts,
         lim=15,
+        expand_text=(1.15, 1.3),
         arrowprops=dict(
             color="gray",
             alpha=0.4,
