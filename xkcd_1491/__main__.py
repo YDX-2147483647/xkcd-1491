@@ -2,6 +2,7 @@ from pathlib import Path
 
 from adjustText import adjust_text
 from matplotlib.pyplot import rc_context, show, subplots
+from matplotlib.scale import AsinhScale
 
 from .data import load_data
 from .util import draw, palette
@@ -18,7 +19,8 @@ with rc_context(xkcd):
     ax.set_xlabel("written in".title())
     ax.set_ylabel("set in - written in".title())
 
-    ax.set_yscale("symlog")
+    ax.set_yscale(AsinhScale(ax.yaxis, linear_width=20))
+    # The axis is only for back-compatibility and never used
 
     ax.grid(visible=True)
 
