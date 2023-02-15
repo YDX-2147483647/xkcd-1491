@@ -30,7 +30,6 @@ palette = cycle(
 def draw(publication: Publication, ax: Axes, *, color: Color) -> list[Annotation]:
     """Plot and annotate a publication"""
 
-    texts = []
     if len(publication.series) == 1:
         event = publication.series[0]
 
@@ -41,12 +40,16 @@ def draw(publication: Publication, ax: Axes, *, color: Color) -> list[Annotation
                 "Please consider remove the event name."
             )
 
-        texts.extend(
-            _draw_event(event, ax, color=color, name_fallback=publication.name)
+        return _draw_event(
+            event,
+            ax,
+            color=color,
+            name_fallback=publication.name,
+            text_props=dict(fontweight="bold"),
         )
+
     else:
-        texts.extend(_draw_series(publication, ax, color=color))
-    return texts
+        return _draw_series(publication, ax, color=color)
 
 
 def event_to_xy(event: Event) -> tuple[float | int, float | int]:
@@ -57,12 +60,18 @@ def event_to_xy(event: Event) -> tuple[float | int, float | int]:
 
 
 def _draw_event(
-    event: Event, ax: Axes, *, color: Color, name_fallback: str | None = None
+    event: Event,
+    ax: Axes,
+    *,
+    color: Color,
+    name_fallback: str | None = None,
+    text_props={},
 ) -> list[Annotation]:
     """Plot and annotate an event
 
     Parameter:
         - name_fallback: If not given, an event without a name won't be annotated.
+        - text_props: Properties of annotations
     """
 
     try:
@@ -76,7 +85,7 @@ def _draw_event(
     ax.plot([xy[0]], [xy[1]], marker=".", alpha=0.8, color=color)
 
     if name := event.name or name_fallback:
-        return [ax.annotate(text=name, xy=xy, color=color)]
+        return [ax.annotate(text=name, xy=xy, color=color, **text_props)]
     else:
         return []
 
@@ -85,6 +94,8 @@ def _draw_series(
     publication: Publication, ax: Axes, *, color: Color
 ) -> list[Annotation]:
     """Plot and annotate a series of events"""
+
+    assert publication.series, f"Cannot draw an empty series: “{publication.name}”"
 
     texts = []
 
@@ -95,11 +106,26 @@ def _draw_series(
         color=color,
     )
 
-    # todo: Annotate the line
+    texts.append(
+        ax.annotate(
+            text=publication.name,
+            xy=event_to_xy(publication.series[0]),
+            color=color,
+            fontweight="bold",
+        )
+    )
 
     # draw events
     texts.extend(
-        chain.from_iterable(_draw_event(e, ax, color=color) for e in publication.series)
+        chain.from_iterable(
+            _draw_event(
+                event,
+                ax,
+                color=color,
+                text_props=dict(fontsize="x-small"),
+            )
+            for event in publication.series
+        )
     )
 
     return texts

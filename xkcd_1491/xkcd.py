@@ -27,6 +27,7 @@ xkcd = {
     "font.family": [
         "xkcd",
         "Source Han Sans CN",
+        "sans-serif",
     ],
     "path.sketch": (
         1,  # scale
