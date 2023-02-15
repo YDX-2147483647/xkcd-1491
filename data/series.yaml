@@ -19,13 +19,33 @@
 - publication: Star Trek
   ref: https://en.wikipedia.org/wiki/Timeline_of_Star_Trek#Timeline_in_order_of_series_air_dates
   series:
-    # todo
-    - name: The Original Series
-      written_in: 1966
-      set_in: 2264
-    - name: The Next Generation
-      written_in: 1987
-      set_in: 2364
+    - name: The Original Series (TV)
+      written_in: [1966, 1969]
+      set_in: [2265, 2269]
+    - name: The Animated Series
+      written_in: [1973, 1974]
+      set_in: [2269, 2270]
+    - name: The Original Series (films)
+      written_in: [1979, 1991]
+      set_in: [2273, 2293]
+    - name: The Next Generation (TV)
+      written_in: [1987, 1994]
+      set_in: [2364, 2370]
+    - name: Deep Space Nine
+      written_in: [1993, 1999]
+      set_in: [2369, 2375]
+    - name: The Next Generation (films)
+      written_in: [1994, 2002]
+      set_in: [2371, 2379]
+    - name: Voyager
+      written_in: [1995, 2001]
+      set_in: [2371, 2378]
+    - name: Enterprise
+      written_in: [2001, 2005]
+      set_in: [2151, 2155]
+    - name: Reboot
+      written_in: [2009, 2016]
+      set_in: [2233, 2263]
 - publication: Back to the Future
   author: Robert Zemeckis, Bob Gale
   series:
@@ -38,7 +58,7 @@
     - name: Back to the Future Part Ⅲ
       written_in: 1990
       set_in: 1885
-- publication: （衍生电影）流浪地球
+- publication: 流浪地球（电影）
   author: 郭帆
   series:
     - name: 流浪地球
@@ -62,3 +82,13 @@
     - name: §4 流浪时代
       written_in: 2000
       set_in: 2450
+- publication: The Shawshank Redemption (film)
+  author: Frank Darabont
+  series:
+    - written_in: 1994
+      set_in: [1947, 1966]
+- publication: 三国演义
+  author: 罗贯中
+  series:
+    - written_in: 1380
+      set_in: [170, 280]
