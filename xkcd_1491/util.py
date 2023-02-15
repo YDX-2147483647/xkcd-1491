@@ -96,26 +96,30 @@ def _draw_series(
     """Plot and annotate a series of events"""
 
     assert publication.series, f"Cannot draw an empty series: “{publication.name}”"
+    assert len(publication.series) > 1
 
     texts = []
 
-    # draw the line
+    # Plot the line
     ax.plot(
         *zip(*map(event_to_xy, publication.series)),
         alpha=0.5,
         color=color,
     )
 
+    # Annotate the line between the first two events
+    # (agnostic about axis' scales)
+    first, second = map(event_to_xy, publication.series[:2])
     texts.append(
         ax.annotate(
             text=publication.name,
-            xy=event_to_xy(publication.series[0]),
+            xy=((first[0] + second[0]) / 2, (first[1] + second[1]) / 2),
             color=color,
             fontweight="bold",
         )
     )
 
-    # draw events
+    # Draw events
     texts.extend(
         chain.from_iterable(
             _draw_event(
