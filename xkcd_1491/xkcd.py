@@ -19,7 +19,7 @@ Remark: Some values are impossible to set from a `matplotlibrc` file.
 [xkcd-doc]: https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xkcd.html
 [xkcd-src]: https://github.com/matplotlib/matplotlib/blob/v3.6.3/lib/matplotlib/pyplot.py#L597-L661
 [rc-doc]: https://matplotlib.org/stable/tutorials/introductory/customizing.html#the-default-matplotlibrc-file
-"""
+"""  # noqa: E501
 
 from matplotlib.patheffects import withStroke
 
