@@ -3,19 +3,21 @@ from pathlib import Path
 
 from adjustText import adjust_text
 from matplotlib.pyplot import rc_context, show, subplots
-from matplotlib.ticker import EngFormatter, MultipleLocator
+from matplotlib.scale import AsinhScale
+from matplotlib.ticker import EngFormatter, FixedLocator, MultipleLocator
 
-from .asinh_shifted import AsinhScale
 from .data import load_data
 from .util import draw, palette
+from .warp_scale import WarpScale
 from .xkcd import xkcd
 
 data = load_data(Path("data").iterdir())
+today = date.today().year
 
 with rc_context(xkcd):
     fig, ax = subplots(
         layout="constrained",
-        figsize=(8, 12),
+        figsize=(10, 10),
     )
 
     ax.grid(visible=True)
@@ -23,8 +25,10 @@ with rc_context(xkcd):
     # X axis
     ax.set_xlabel("released".title())
     ax.xaxis.set_tick_params(which="both", top=True, labeltop=True)
-    ax.set_xscale(AsinhScale(ax.xaxis, linear_width=300, center=date.today().year))
-    ax.xaxis.set_major_formatter("{x:04g}")  # todo
+    ax.set_xscale(WarpScale(ax.xaxis, center=today, linear_widths=(50, 20)))
+    ax.xaxis.set_major_locator(
+        FixedLocator([today, 2020, 2000, 1960, 1900, 1800, 1600, 1300])
+    )
     ax.xaxis.set_minor_locator(MultipleLocator(base=20))
 
     # Y axis
