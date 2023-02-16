@@ -3,8 +3,7 @@ from pathlib import Path
 
 from adjustText import adjust_text
 from matplotlib.pyplot import rc_context, show, subplots
-from matplotlib.scale import AsinhScale
-from matplotlib.ticker import EngFormatter, FixedLocator, MultipleLocator
+from matplotlib.ticker import AsinhLocator, EngFormatter, FixedLocator, MultipleLocator
 
 from .data import load_data
 from .util import draw, palette
@@ -34,8 +33,10 @@ with rc_context(xkcd):
     # Y axis
     ax.set_ylabel("setting - released".title())
     ax.yaxis.set_tick_params(which="both", right=True, labelright=True)
-    ax.set_yscale(AsinhScale(ax.yaxis, linear_width=20, subs=(2, 4, 6, 8)))
+    ax.set_yscale(WarpScale(ax.yaxis, linear_widths=(100, 20)))
+    ax.yaxis.set_major_locator(AsinhLocator(linear_width=20))
     ax.yaxis.set_major_formatter(EngFormatter(places=0))
+    ax.yaxis.set_minor_locator(AsinhLocator(linear_width=20, subs=(2, 4, 6, 8)))
 
     # Draw
 

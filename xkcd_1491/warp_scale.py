@@ -1,11 +1,14 @@
 from __future__ import annotations
 
+from functools import reduce
 from typing import TYPE_CHECKING
 
 from matplotlib.scale import FuncScale
 from numpy import arcsinh, sinh
 
 if TYPE_CHECKING:
+    from typing import Reversible
+
     from matplotlib.axis import Axis
 
 
@@ -27,8 +30,8 @@ class WarpScale(FuncScale):
         self,
         axis: Axis,
         *,
-        center: float,
-        linear_widths: tuple[float, float] = (1.0, 1.0),
+        center: float = 0.0,
+        linear_widths: Reversible[float] = (1.0, 1.0),
     ) -> None:
         """
         Parameters:
@@ -39,9 +42,9 @@ class WarpScale(FuncScale):
         """
 
         def forward(x):
-            return asinh_(asinh_(x - center, linear_widths[0]), linear_widths[1])
+            return reduce(asinh_, linear_widths, x - center)
 
         def inverse(y):
-            return sinh_(sinh_(y, linear_widths[1]), linear_widths[0]) + center
+            return reduce(sinh_, reversed(linear_widths), y) + center
 
         super().__init__(axis, functions=(forward, inverse))
