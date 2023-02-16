@@ -17,9 +17,11 @@ from .ticker import AsinhLocator
 class AsinhTransform(Transform):
     """Inverse hyperbolic-sine transformation used by `.AsinhScale`"""
 
+    center: float
+
     input_dims = output_dims = 1
 
-    def __init__(self, linear_width):
+    def __init__(self, linear_width, center: float):
         super().__init__()
         if linear_width <= 0.0:
             raise ValueError(
@@ -27,27 +29,32 @@ class AsinhTransform(Transform):
             )
         self.linear_width = linear_width
 
+        self.center = center
+
     def transform_non_affine(self, a):
-        return self.linear_width * np.arcsinh(a / self.linear_width)
+        return self.linear_width * np.arcsinh((a - self.center) / self.linear_width)
 
     def inverted(self):
-        return InvertedAsinhTransform(self.linear_width)
+        return InvertedAsinhTransform(self.linear_width, self.center)
 
 
 class InvertedAsinhTransform(Transform):
     """Hyperbolic sine transformation used by `.AsinhScale`"""
 
+    center: float
+
     input_dims = output_dims = 1
 
-    def __init__(self, linear_width):
+    def __init__(self, linear_width, center: float):
         super().__init__()
         self.linear_width = linear_width
+        self.center = center
 
     def transform_non_affine(self, a):
-        return self.linear_width * np.sinh(a / self.linear_width)
+        return self.linear_width * np.sinh(a / self.linear_width) + self.center
 
     def inverted(self):
-        return AsinhTransform(self.linear_width)
+        return AsinhTransform(self.linear_width, self.center)
 
 
 class AsinhScale(ScaleBase):
@@ -90,6 +97,7 @@ class AsinhScale(ScaleBase):
         *,
         linear_width=1.0,
         base=10,
+        center: float = 0.0,
         subs: Sequence[int] | Literal["auto"] = "auto",
         **kwargs,
     ):
@@ -106,13 +114,19 @@ class AsinhScale(ScaleBase):
             on a logarithmic scale. If this is less than one,
             then rounding is to the nearest integer multiple
             of powers of ten.
+        center : float, default: 0
+            The center of symmetry, can be used to offset.
         subs : sequence of int
             Multiples of the number base used for minor ticks.
             If set to 'auto', this will use built-in defaults,
             e.g. (2, 5) for base=10.
+
+        Caveats
+        ----------
+        `~.ticker.LogFormatterSciNotation` is not supported for non-zero center.
         """
         super().__init__(axis)
-        self._transform = AsinhTransform(linear_width)
+        self._transform = AsinhTransform(linear_width, center)
         self._base = int(base)
         if subs == "auto":
             self._subs = self.auto_tick_multipliers.get(self._base)
@@ -120,19 +134,21 @@ class AsinhScale(ScaleBase):
             self._subs = subs
 
     linear_width = property(lambda self: self._transform.linear_width)
+    center = property(lambda self: self._transform.center)
 
     def get_transform(self):
         return self._transform
 
     def set_default_locators_and_formatters(self, axis):
         axis.set(
-            major_locator=AsinhLocator(self.linear_width, base=self._base),
+            major_locator=AsinhLocator(self.linear_width, self.center, base=self._base),
             minor_locator=AsinhLocator(
-                self.linear_width, base=self._base, subs=self._subs
+                self.linear_width, self.center, base=self._base, subs=self._subs
             ),
             minor_formatter=NullFormatter(),
         )
-        if self._base > 1:
+
+        if self.center == 0 and self._base > 1:
             axis.set_major_formatter(LogFormatterSciNotation(self._base))
         else:
-            axis.set_major_formatter("{x:.3g}"),
+            axis.set_major_formatter("{x:.3g}")

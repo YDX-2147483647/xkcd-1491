@@ -23,13 +23,25 @@ class AsinhLocator(Locator):
        based on early user feedback.
     """
 
-    def __init__(self, linear_width, numticks=11, symthresh=0.2, base=10, subs=None):
+    center: float
+
+    def __init__(
+        self,
+        linear_width,
+        center: float,
+        numticks=11,
+        symthresh=0.2,
+        base=10,
+        subs=None,
+    ):
         """
         Parameters
         ----------
         linear_width : float
             The scale parameter defining the extent
             of the quasi-linear region.
+        center : float
+            The center of symmetry, can be used to offset.
         numticks : int, default: 11
             The approximate number of major ticks that will fit
             along the entire axis
@@ -47,6 +59,7 @@ class AsinhLocator(Locator):
             for the minor ticks, e.g. (2, 5) when base=10.
         """
         super().__init__()
+        self.center = center
         self.linear_width = linear_width
         self.numticks = numticks
         self.symthresh = symthresh
@@ -66,10 +79,12 @@ class AsinhLocator(Locator):
 
     def __call__(self):
         vmin, vmax = self.axis.get_view_interval()
-        if (vmin * vmax) < 0 and abs(1 + vmax / vmin) < self.symthresh:
+        if ((vmin - self.center) * (vmax - self.center)) < 0 and abs(
+            1 + (vmax - self.center) / (vmin - self.center)
+        ) < self.symthresh:
             # Data-range appears to be almost symmetric, so round up:
-            bound = max(abs(vmin), abs(vmax))
-            return self.tick_values(-bound, bound)
+            bound = max(abs(vmin - self.center), abs(vmax - self.center))
+            return self.tick_values(self.center - bound, self.center + bound)
         else:
             return self.tick_values(vmin, vmax)
 
@@ -77,7 +92,7 @@ class AsinhLocator(Locator):
         # Construct a set of "on-screen" locations
         # that are uniformly spaced:
         ymin, ymax = self.linear_width * np.arcsinh(
-            np.array([vmin, vmax]) / self.linear_width
+            (np.array([vmin, vmax]) - self.center) / self.linear_width
         )
         ys = np.linspace(ymin, ymax, self.numticks)
         zero_dev = np.abs(ys / (ymax - ymin))
@@ -86,11 +101,11 @@ class AsinhLocator(Locator):
             # if the axis straddles zero
             ys = np.hstack([ys[(zero_dev > 0.5 / self.numticks)], 0.0])
 
-        # Transform the "on-screen" grid to the data space:
+        # Transform the "on-screen" grid to the shifted data space:
         xs = self.linear_width * np.sinh(ys / self.linear_width)
         zero_xs = ys == 0
 
-        # Round the data-space values to be intuitive base-n numbers,
+        # Round the shifted-data-space values to be intuitive base-n numbers,
         # keeping track of positive and negative values separately,
         # but giving careful treatment to the zero value:
         if self.base > 1:
@@ -113,7 +128,7 @@ class AsinhLocator(Locator):
                 np.where(zero_xs, 0.0, np.floor(np.log10(np.abs(xs) + zero_xs * 1e-6))),
             )
             qs = powers * np.round(xs / powers)
-        ticks = np.array(sorted(set(qs)))
+        ticks = np.array(sorted(set(qs))) + self.center
 
         if len(ticks) >= 2:
             return ticks
