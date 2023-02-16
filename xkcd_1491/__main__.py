@@ -2,9 +2,9 @@ from pathlib import Path
 
 from adjustText import adjust_text
 from matplotlib.pyplot import rc_context, show, subplots
-from matplotlib.scale import AsinhScale
 from matplotlib.ticker import MultipleLocator
 
+from .asinh_shifted import AsinhScale
 from .data import load_data
 from .util import draw, palette
 from .xkcd import xkcd

@@ -36,3 +36,4 @@ select = [
 ]
 line-length = 88  # Same as black
 src = ["xkcd_1491"]
+ignore-init-module-imports = true
