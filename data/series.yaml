@@ -92,3 +92,27 @@
   series:
     - written_in: 1380
       set_in: [170, 280]
+- publication: Blade Runner
+  author: Ridley Scott, Denis Villeneuve
+  series:
+    - name: Blade Runner
+      written_in: 1982
+      set_in: 2019
+    - name: Blade Runner 2049
+      written_in: 2017
+      set_in: 2049
+- publication: Henry VIII
+  author: William Shakespeare
+  series:
+    - written_in: 1623
+      set_in: [1521, 1533]
+- publication: Frankenstein
+  author: Mary Shelley
+  series:
+    - written_in: 1818
+      set_in: [1765, 1768]
+- publication: Les Misérables
+  author: Victor Hugo
+  series:
+    - written_in: 1862
+      set_in: [1815, 1832]

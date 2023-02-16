@@ -10,6 +10,10 @@
 
   Explain xkcd is a wiki dedicated to explaining xkcd.
 
+- [List of stories set in a future now in the past | Wikipedia](https://en.wikipedia.org/wiki/List_of_stories_set_in_a_future_now_in_the_past). ([CC BY-SA 3.0](https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License))
+
+- [Category: Fiction by century of setting | Wikipedia](https://en.wikipedia.org/wiki/Category:Fiction_by_century_of_setting). ([CC BY-SA 3.0](https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License))
+
 - [Stories_of_the_Past_and_Future | GitHub](https://github.com/tomhopper/Stories_of_the_Past_and_Future), by [tomhopper](https://github.com/tomhopper). (GPL-3.0)
 
   An updatable version of it in R.
