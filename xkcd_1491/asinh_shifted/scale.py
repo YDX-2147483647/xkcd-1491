@@ -124,6 +124,8 @@ class AsinhScale(ScaleBase):
         Caveats
         ----------
         `~.ticker.LogFormatterSciNotation` is not supported for non-zero center.
+
+        The axis is only for back-compatibility and never used.
         """
         super().__init__(axis)
         self._transform = AsinhTransform(linear_width, center)
