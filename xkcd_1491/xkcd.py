@@ -45,6 +45,10 @@ xkcd = {
     "lines.linewidth": 2.0,
     "xtick.major.size": 8,
     "xtick.major.width": 3,
+    "xtick.minor.size": 4,
+    "xtick.minor.width": 1,
     "ytick.major.size": 8,
     "ytick.major.width": 3,
+    "ytick.minor.size": 4,
+    "ytick.minor.width": 1,
 }

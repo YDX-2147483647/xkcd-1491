@@ -3,6 +3,7 @@ from pathlib import Path
 from adjustText import adjust_text
 from matplotlib.pyplot import rc_context, show, subplots
 from matplotlib.scale import AsinhScale
+from matplotlib.ticker import MultipleLocator
 
 from .data import load_data
 from .util import draw, palette
@@ -16,10 +17,14 @@ with rc_context(xkcd):
         figsize=(8, 12),
     )
 
-    ax.set_xlabel("written in".title())
-    ax.set_ylabel("set in - written in".title())
+    ax.set_xlabel("released".title())
+    ax.set_ylabel("setting - released".title())
 
-    ax.set_yscale(AsinhScale(ax.yaxis, linear_width=20))
+    ax.xaxis.set_tick_params(which="both", top=True, labeltop=True)
+    ax.xaxis.set_minor_locator(MultipleLocator(base=20))
+    ax.yaxis.set_tick_params(which="both", right=True, labelright=True)
+
+    ax.set_yscale(AsinhScale(ax.yaxis, linear_width=20, subs=(2, 4, 6, 8)))
     # The axis is only for back-compatibility and never used
 
     ax.grid(visible=True)

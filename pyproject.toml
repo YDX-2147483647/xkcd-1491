@@ -6,7 +6,7 @@ authors = [
     {name = "Y.D.X.", email = "73375426+YDX-2147483647@users.noreply.github.com"},
 ]
 dependencies = [
-    "matplotlib>=3.6.3",
+    "matplotlib>=3.7.0",
     "numpy>=1.24.2",
     "polars>=0.16.4",
     "ruamel.yaml>=0.17.21",
