@@ -24,11 +24,15 @@
 
   [日本](https://zh.moegirl.org.cn/日本ACGN史年表)、[欧美](https://zh.moegirl.org.cn/欧美ACG史年表)、[中国](https://zh.moegirl.org.cn/中国ACG史年表)。
 
+- [Timeline — Ghost in the Shell Wiki | Fandom](https://ghostintheshell.fandom.com/wiki/Timeline). ([CC BY-SA 3.0](https://www.fandom.com/licensing))
+
+- [History of science fiction | Wikipedia](https://en.wikipedia.org/wiki/History_of_science_fiction). ([CC BY-SA 3.0](https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License))
+
 ## Notes
 
 ### 方针
 
-- 名字采用未经翻译的原始文字。
+- 名字主要采用未经翻译的原始文字，必要时再在斜线后注翻译。
 - 作品名有歧义时，后缀括号标明。
 - 最多记录主要作者。（不超过两人）
 - 尽量收录改编作品的原作。
@@ -82,3 +86,11 @@
 #### 曹雪芹《红楼梦》
 
 具体年代难考，且似有刻意混淆。
+
+#### Ray Bradbury *Fahrenheit 451*
+
+[Wikipedia](https://en.wikipedia.org/w/index.php?title=Fahrenheit_451&oldid=1138720058#Plot_summary):
+
+> *Fahrenheit 451* is set in an unspecified city in the year 2049 (according to Ray Bradbury's Coda), though it is written as if set in a distant future. The earliest editions make clear that it takes place no earlier than the year 1960. <small>(In early editions of the book, Montag says, "We've started and won two atomic wars since 1960", in the first pages of The Sieve and the Sand. This sets a lower bound on the time setting. In later decades, some editions have changed this year to 1990 or 2022.)</small>
+
+I briefly look over some versions. Statements of atomic wars after 1990 or 2022 do exist, but I can't find any direct evidence of the 2049.

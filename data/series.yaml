@@ -116,3 +116,50 @@
   series:
     - written_in: 1862
       set_in: [1815, 1832]
+- publication: 鉄腕アトム／铁臂阿童木
+  author: 手塚 治
+  series:
+    - written_in: [1952, 1968]
+      set_in: 2003
+- publication: 攻殻機動隊
+  series:
+    - name: Ghost in the Shell
+      written_in: [1989, 1995]
+      set_in: 2029
+    - name: "1.5: Human-Error Processor"
+      written_in: [1991, 1996]
+      set_in: 2031
+    - name: "2: Man/Machine Interface"
+      written_in: 1997
+      set_in: 2035
+    - name: "2: イノセンス／无罪"
+      written_in: 2004
+      set_in: 2031
+    - name: Stand Alone Complex
+      written_in: [2002, 2003]
+      set_in: 2030
+    - name: S.A.C. 2nd GIG
+      written_in: [2004, 2005]
+      set_in: 2032
+    - name: S.A.C. Solid State Society
+      written_in: [2006, 2007]
+      set_in: 2034
+    - name: Arise
+      written_in: [2013, 2015]
+      set_in: [2027, 2028]
+    - name: S.A.C. 2045
+      written_in: [2020, 2022]
+      set_in: 2045
+- publication: 史记
+  author: 司马迁
+  series:
+    - written_in: [-103, -90]
+      set_in: [-3076, -121]
+- publication: De la terre à la lune／从地球到月球
+  author: Jules Verne
+  series:
+    - written_in: 1865
+      set_in: 1865
+    - name: Autour de la Lune／Around the Moon
+      written_in: 1870
+      set_in: 1865
