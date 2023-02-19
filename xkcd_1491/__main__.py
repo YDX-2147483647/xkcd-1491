@@ -35,7 +35,7 @@ with rc_context(xkcd):
     ax.set_ylim(-10e6, 31e6)  # Auto mode has too much margins
     ax.yaxis.set_tick_params(which="both", right=True, labelright=True)
     ax.set_yscale(WarpScale(ax.yaxis, linear_widths=(100, 20)))
-    ax.yaxis.set_major_locator(AsinhLocator(linear_width=20))
+    ax.yaxis.set_major_locator(AsinhLocator(linear_width=20, numticks=20))
     ax.yaxis.set_major_formatter(EngFormatter(places=0))
     ax.yaxis.set_minor_locator(AsinhLocator(linear_width=20, subs=(2, 4, 6, 8)))
 
