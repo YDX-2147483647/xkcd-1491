@@ -139,19 +139,25 @@ def _draw_series(
     return texts
 
 
-def draw_areas(ax: Axes, origins: Iterable[float]) -> None:
-    origins = sorted(origins, reverse=True)
+def draw_areas(ax: Axes, past_years: Iterable[float], futures: Iterable[float]) -> None:
+    past_years = sorted(past_years, reverse=True)
+    origin = past_years[0]
+    futures = sorted(futures)
 
     x_start, x_end = ax.xaxis.get_view_interval()
+    y_interval = ax.yaxis.get_view_interval()
 
     t = ax.xaxis.get_transform()
     # `xs` are uniform spaced after scaling.
     xs = t.inverted().transform(
-        linspace(*t.transform([x_start, origins[0]]), num=100, endpoint=True)
+        linspace(*t.transform([x_start, origin]), num=100, endpoint=True)
     )
 
-    for right, left in pairwise(origins):
+    for right, left in pairwise(past_years):
         ax.fill_between(xs, left - xs, right - xs, alpha=0.2)
+    for left, right in pairwise(futures):
+        ax.fill_between(xs, origin + left - xs, origin + right - xs, alpha=0.2)
 
     # Drawing areas may expand the view. We should revert it.
     ax.set_xlim(x_start, x_end)
+    ax.set_ylim(*y_interval)

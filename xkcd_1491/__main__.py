@@ -12,7 +12,8 @@ from .xkcd import xkcd
 
 data = load_data(Path("data").iterdir())
 today = date.today().year
-origins = [today, 2020, 2000, 1960, 1900, 1800, 1600, 1300, 600, 0, -2000]
+past_years = [today, 2020, 2000, 1960, 1900, 1800, 1600, 1300, 600, 0, -2000]
+futures = [2020 - today, 0, 10, 20, 50, 100, 1e3, 1e4, 1e5]
 
 with rc_context(xkcd):
     fig, ax = subplots(
@@ -26,7 +27,7 @@ with rc_context(xkcd):
     ax.set_xlabel("released".title())
     ax.xaxis.set_tick_params(which="both", top=True, labeltop=True)
     ax.set_xscale(WarpScale(ax.xaxis, center=today, linear_widths=(50, 20)))
-    ax.xaxis.set_major_locator(FixedLocator(origins))
+    ax.xaxis.set_major_locator(FixedLocator(past_years))
     ax.xaxis.set_minor_locator(MultipleLocator(base=20))
 
     # Y axis
@@ -44,7 +45,7 @@ with rc_context(xkcd):
     for publication in data:
         texts.extend(draw(publication, ax, color=next(palette)))
 
-    draw_areas(ax, origins=origins)
+    draw_areas(ax, past_years=past_years, futures=futures)
 
     adjust_text(
         texts,
