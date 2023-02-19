@@ -235,3 +235,18 @@
   series:
     - written_in: [1995, 1996]
       set_in: [2015, 2016]
+- publication: 風の谷のナウシカ
+  author: 宮崎 駿
+  series:
+    - written_in: [1982, 1994]
+      set_in: 3000
+- publication: 过秦论
+  author: 贾谊
+  series:
+    - written_in: -179
+      set_in: [-220, -206]
+- publication: Ἱστορίαι／Histories
+  author: Ἡρόδοτος
+  series:
+    - written_in: -429
+      set_in: [-3000, -479]
