@@ -202,3 +202,36 @@
     - name: Blind Alley
       written_in: 1945
       set_in: [12561, 12562]
+- publication: The Martian Chronicles
+  author: Ray Bradbury
+  series:
+    - written_in: 1950
+      set_in: [1999, 2026]
+- publication: A Canticle for Leibowitz
+  author: Walter M. Miller Jr.
+  series:
+    - written_in: 1959
+      set_in: [2550, 3781]
+- publication: 三体
+  author: 刘慈欣
+  series:
+    - name: 三体
+      written_in: 2006
+      set_in: [1968, 2007]
+    - name: 2：黑暗森林
+      written_in: 2008
+      set_in: [2007, 2220]
+    - name: 3：死神永生（魔法师之死）
+      written_in: 2010
+      set_in: 1453
+    - name: 3：死神永生
+      written_in: 2010
+      set_in: [2227, 2691]
+    - name: 3：死神永生（647号宇宙）
+      written_in: 2010
+      set_in: 18906416
+- publication: 新世紀エヴァンゲリオン／Evangelion
+  author: 庵野 秀明
+  series:
+    - written_in: [1995, 1996]
+      set_in: [2015, 2016]
