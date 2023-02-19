@@ -1,10 +1,14 @@
 from __future__ import annotations
 
-from itertools import chain, cycle
+from itertools import chain, cycle, pairwise
 from typing import TYPE_CHECKING
 from warnings import warn
 
+from numpy import linspace
+
 if TYPE_CHECKING:
+    from typing import Iterable
+
     from matplotlib.axes import Axes
     from matplotlib.colors import Color
     from matplotlib.text import Annotation
@@ -133,3 +137,21 @@ def _draw_series(
     )
 
     return texts
+
+
+def draw_areas(ax: Axes, origins: Iterable[float]) -> None:
+    origins = sorted(origins, reverse=True)
+
+    x_start, x_end = ax.xaxis.get_view_interval()
+
+    t = ax.xaxis.get_transform()
+    # `xs` are uniform spaced after scaling.
+    xs = t.inverted().transform(
+        linspace(*t.transform([x_start, origins[0]]), num=100, endpoint=True)
+    )
+
+    for right, left in pairwise(origins):
+        ax.fill_between(xs, left - xs, right - xs, alpha=0.2)
+
+    # Drawing areas may expand the view. We should revert it.
+    ax.set_xlim(x_start, x_end)
