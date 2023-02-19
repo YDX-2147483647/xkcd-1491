@@ -163,3 +163,42 @@
     - name: Autour de la Lune／Around the Moon
       written_in: 1870
       set_in: 1865
+- publication: Foundation
+  author: Issac Asimov
+  series:
+    - name: Prelude to Foundation
+      written_in: 1988
+      set_in: 23604
+    - name: Forward the Foundation
+      written_in: 1993
+      set_in: [23612, 23653]
+    - name: Foundation
+      written_in: 1951
+      set_in: [23651, 23812]
+    - name: Foundation and Empire
+      written_in: 1952
+      set_in: [23847, 23963]
+    - name: Second Foundation
+      written_in: 1953
+      set_in: [23968, 24029]
+    - name: Foundation's Edge
+      written_in: 1982
+      set_in: 24150
+    - name: Foundation and Earth
+      written_in: 1986
+      set_in: 24150
+- publication: Galactic Empire
+  author: Issac Asimov
+  series:
+    - name: The Star, Like Dust
+      written_in: 1951
+      set_in: 4850
+    - name: The Currents of Space
+      written_in: 1952
+      set_in: 11129
+    - name: Pebble in the Sky
+      written_in: 1950
+      set_in: 12411
+    - name: Blind Alley
+      written_in: 1945
+      set_in: [12561, 12562]
