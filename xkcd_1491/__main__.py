@@ -1,8 +1,9 @@
+import logging
 from datetime import date
 from pathlib import Path
 
 from adjustText import adjust_text
-from matplotlib.pyplot import rc_context, show, subplots
+from matplotlib.pyplot import rc_context, subplots
 from matplotlib.ticker import AsinhLocator, EngFormatter, FixedLocator, MultipleLocator
 
 from .data import load_data
@@ -14,6 +15,13 @@ data = load_data(Path("data").iterdir())
 today = date.today().year
 past_years = [today, 2020, 2000, 1960, 1900, 1800, 1600, 1300, 600, 0, -2000]
 futures = [2020 - today, 0, 10, 20, 50, 100, 1e3, 1e4, 1e5]
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+)
+
+logging.info("📐 Initializing…")
 
 with rc_context(xkcd):
     fig, ax = subplots(
@@ -40,6 +48,7 @@ with rc_context(xkcd):
     ax.yaxis.set_minor_locator(AsinhLocator(linear_width=20, subs=(2, 4, 6, 8)))
 
     # Draw
+    logging.info("📈 Drawing…")
 
     texts = []
 
@@ -48,7 +57,8 @@ with rc_context(xkcd):
 
     draw_areas(ax, past_years=past_years, futures=futures)
 
-    adjust_text(
+    logging.info("🔧 Adjusting texts…")
+    n_iter = adjust_text(
         texts,
         lim=15,
         expand_text=(1.15, 1.3),
@@ -58,5 +68,9 @@ with rc_context(xkcd):
             arrowstyle="-",
         ),
     )
+    logging.info(f"🔧 Texts adjustment iterated {n_iter} time(s).")
 
-show()
+logging.info("💾 Saving…")
+fig.savefig("output.png")
+
+logging.info("🎉 Finished.")
