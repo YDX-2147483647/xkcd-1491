@@ -153,8 +153,12 @@ def draw_areas(ax: Axes, past_years: Iterable[float], futures: Iterable[float]) 
         linspace(*t.transform([x_start, origin]), num=100, endpoint=True)
     )
 
+    # Draw past areas
     for right, left in pairwise(past_years):
         ax.fill_between(xs, left - xs, right - xs, alpha=0.2)
+    # Draw obsolete past line
+    ax.plot(xs, xs - origin, alpha=0.2, linestyle="--")
+    # Draw future areas
     for left, right in pairwise(futures):
         ax.fill_between(xs, origin + left - xs, origin + right - xs, alpha=0.2)
 
