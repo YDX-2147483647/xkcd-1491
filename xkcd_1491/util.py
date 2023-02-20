@@ -4,6 +4,8 @@ from itertools import chain, cycle, pairwise
 from typing import TYPE_CHECKING
 from warnings import warn
 
+from matplotlib.patches import Ellipse
+from matplotlib.transforms import Affine2D
 from numpy import linspace
 
 if TYPE_CHECKING:
@@ -63,6 +65,28 @@ def event_to_xy(event: Event) -> tuple[float | int, float | int]:
     )
 
 
+def draw_event_diff(event: Event, ax: Axes, **kwargs) -> None:
+    """Draw an ellipse to represent uncertainty of an event
+
+    Parameters:
+        - `event`
+        - `ax`
+        - `kwargs` for `Ellipse`
+    """
+
+    ellipse = Ellipse(
+        (0, 0),
+        width=event.written_in_diff,
+        height=event.set_in_diff,
+        **kwargs,
+    )
+    ellipse.set_transform(
+        Affine2D().skew_deg(xShear=0, yShear=-45).translate(*event_to_xy(event))
+        + ax.transData
+    )
+    ax.add_patch(ellipse)
+
+
 def _draw_event(
     event: Event,
     ax: Axes,
@@ -78,15 +102,11 @@ def _draw_event(
         - text_props: Properties of annotations
     """
 
-    try:
-        assert not isinstance(event.written_in, tuple)
-        assert not isinstance(event.set_in, tuple)
-    except AssertionError:
-        # todo: Change dot size by time ranges.
-        pass
-
     xy = event_to_xy(event)
     ax.plot([xy[0]], [xy[1]], marker=".", alpha=0.8, color=color)
+
+    if isinstance(event.written_in, tuple) or isinstance(event.set_in, tuple):
+        draw_event_diff(event, ax, facecolor=color, alpha=0.2)
 
     if name := event.name or name_fallback:
         return [ax.annotate(text=name, xy=xy, color=color, **text_props)]

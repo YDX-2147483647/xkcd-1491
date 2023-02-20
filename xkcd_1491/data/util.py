@@ -10,3 +10,10 @@ def average(value: int | tuple[int, ...]) -> int | float:
         return sum(value) / len(value)
     else:
         return value
+
+
+def diff(value: int | tuple[int, ...]) -> int:
+    if isinstance(value, tuple):
+        return max(value) - min(value)
+    else:
+        return 1

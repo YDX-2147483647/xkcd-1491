@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 import polars as pl
 from ruamel.yaml import YAML
 
-from .util import average, tuple_or_int
+from .util import average, diff, tuple_or_int
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -25,8 +25,16 @@ class Event:
         return average(self.written_in)
 
     @property
+    def written_in_diff(self) -> float | int:
+        return diff(self.written_in)
+
+    @property
     def set_in_average(self) -> float | int:
         return average(self.set_in)
+
+    @property
+    def set_in_diff(self) -> float | int:
+        return diff(self.set_in)
 
 
 @dataclass
