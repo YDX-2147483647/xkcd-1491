@@ -250,3 +250,26 @@
   series:
     - written_in: -429
       set_in: [-3000, -479]
+- publication: Ready Player One
+  author: Ernest Cline
+  series:
+    - written_in: 2011
+      set_in: 2045
+    - name: Ready Player Two
+      written_in: 2020
+      set_in: 2045
+- publication: Avatar
+  series:
+    - written_in: 2009
+      set_in: 2154
+    - name: The Way of Water
+      written_in: 2022
+      set_in: 2170
+- publication: The Curious Case of Benjamin Button
+  series:
+    - name: (short story)
+      written_in: 1922
+      set_in: [1860, 1930]
+    - name: (film)
+      written_in: 2008
+      set_in: [1918, 2005]

@@ -26,7 +26,7 @@ logging.info("📐 Initializing…")
 with rc_context(xkcd):
     fig, ax = subplots(
         layout="constrained",
-        figsize=(10, 10),
+        figsize=(10, 14),
     )
 
     ax.grid(visible=True)
