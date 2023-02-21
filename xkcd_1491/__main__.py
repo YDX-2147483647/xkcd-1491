@@ -57,6 +57,12 @@ with rc_context(xkcd):
 
     draw_areas(ax, past_years=past_years, futures=futures)
 
+    logging.info(
+        "💾 Saving original version…"
+        " (for https://github.com/Phlya/adjustText/issues/138)"
+    )
+    fig.savefig("output-original.png")
+
     logging.info("🔧 Adjusting texts…")
     n_iter = adjust_text(
         texts,
