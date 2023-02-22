@@ -1,17 +1,31 @@
 """
-Copied from adjustText v0.8.0. (MIT license)
+Adapted from adjustText v0.8.0. (MIT license)
 https://github.com/Phlya/adjustText/blob/0.8.0/adjustText/__init__.py
+
+## Key changes
+
+Assume texts are `Annotation`s rather than `Text`s.
+
+An `Annotation` has two positions: the annotated point (`xy` as a `Text`),
+and the annotation text which can be far away from the point (`xytext` or `xyann`).
+
+Arrows will be drawn from `xy` to `xytext`,
+instead of from old `xytext` to new `xytext`.
 """
 
 from __future__ import annotations, division
 
 from itertools import product
 from operator import itemgetter
+from typing import TYPE_CHECKING
 
 import matplotlib
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.path import get_path_collection_extents
+
+if TYPE_CHECKING:
+    from matplotlib.text import Annotation
 
 
 def get_bboxes_pathcollection(sc, ax):
@@ -437,7 +451,7 @@ def float_to_tuple(a):
 
 
 def adjust_text(
-    texts,
+    texts: list[Annotation],
     x=None,
     y=None,
     add_objects=None,
@@ -734,10 +748,9 @@ def adjust_text(
             ap.update(kwap)  # Add arrowprops from kwargs
             ax.annotate(
                 "",  # Add an arrow from the text to the point
-                xy=get_orig_coords(transform, orig_x[j], orig_y[j]),
+                xy=text.xy,
                 xytext=transform.inverted().transform(get_midpoint(bbox)),
                 arrowprops=ap,
-                xycoords=transform,
                 textcoords=transform,
                 *args,
                 **kwargs,
