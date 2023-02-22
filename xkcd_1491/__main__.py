@@ -6,6 +6,7 @@ from matplotlib.pyplot import rc_context, subplots
 from matplotlib.ticker import AsinhLocator, EngFormatter, FixedLocator, MultipleLocator
 
 from .adjust_text import adjust_text
+from .amend import amend
 from .data import load_data
 from .util import draw, draw_areas, palette
 from .warp_scale import WarpScale
@@ -56,6 +57,9 @@ with rc_context(xkcd):
         texts.extend(draw(publication, ax, color=next(palette)))
 
     draw_areas(ax, past_years=past_years, futures=futures)
+
+    logging.info("👻 Amending texts…")
+    amend(texts)
 
     logging.info(
         "💾 Saving original version…"
