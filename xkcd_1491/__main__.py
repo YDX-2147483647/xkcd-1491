@@ -2,10 +2,10 @@ import logging
 from datetime import date
 from pathlib import Path
 
-from adjustText import adjust_text
 from matplotlib.pyplot import rc_context, subplots
 from matplotlib.ticker import AsinhLocator, EngFormatter, FixedLocator, MultipleLocator
 
+from .adjust_text import adjust_text
 from .data import load_data
 from .util import draw, draw_areas, palette
 from .warp_scale import WarpScale
