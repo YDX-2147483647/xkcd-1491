@@ -23,6 +23,7 @@ import matplotlib
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.path import get_path_collection_extents
+from rich.progress import track
 
 if TYPE_CHECKING:
     from matplotlib.text import Annotation
@@ -231,7 +232,9 @@ def optimally_align_text(
         va = ["bottom", "top", "center"]
     alignment = list(product(ha, va))
     #    coords = np.array(zip(x, y))
-    for i, text in enumerate(texts):
+    for i, text in track(
+        enumerate(texts), description="Optimally aligning texts", total=len(texts)
+    ):
         #        tcoords = np.array(text.get_position()).T
         #        nonself_coords = coords[~np.all(coords==tcoords, axis=1)]
         #        nonself_x, nonself_y = np.split(nonself_coords, 2, axis=1)
@@ -669,7 +672,7 @@ def adjust_text(
 
     texts = repel_text_from_axes(texts, ax, renderer=r, expand=expand_points)
     history = [(np.inf, np.inf)] * 10
-    for i in range(lim):
+    for i in track(range(lim), description="Iterating texts positions"):
         #        q1, q2 = [np.inf, np.inf], [np.inf, np.inf]
 
         if avoid_text:
