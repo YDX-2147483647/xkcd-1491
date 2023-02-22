@@ -88,7 +88,7 @@ def _load_series(file: Path) -> list[Publication]:
 def _load_data(file: Path) -> list[Publication]:
     """Load a set of data"""
 
-    match file.suffix:  # noqa E501 for https://github.com/charliermarsh/ruff/issues/282
+    match file.suffix:
         case ".yaml" | ".yml":
             return _load_series(file)
         case ".csv":

@@ -23,7 +23,7 @@ check = {composite = ["fmt", "lint"]}
 [tool.pdm.dev-dependencies]
 dev = [
     "black>=23.1.0",
-    "ruff>=0.0.246",
+    "ruff>=0.0.250",
 ]
 
 [tool.ruff]
