@@ -1,5 +1,21 @@
 # xkcd 1491: Stories of the Past and Future
 
+## Getting started
+
+Clone this repo and install [pdm](https://pdm.fming.dev/latest/#installation).
+
+```shell
+$ pdm install
+
+$ pdm run python -m xkcd_1491
+[INFO] 📐 Initializing…
+[INFO] 📈 Drawing…
+……
+[INFO] 🎉 Finished.
+```
+
+Now view `output.png`.
+
 ## Relevant
 
 - [*Stories of the Past and Future* | xkcd](https://xkcd.com/1491/), by Randall Munroe. ([CC BY-NC 2.5](https://creativecommons.org/licenses/by-nc/2.5/))
