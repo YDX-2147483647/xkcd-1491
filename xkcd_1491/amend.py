@@ -17,11 +17,12 @@ def amend(texts: list[Annotation]) -> None:
         ("風の谷のナウシカ", (0, 20)),
         ("S.A.C. 2045", (0, -40)),
         ("Ready Player Two", (-100, -10)),
-        ("Back to the Future Part Ⅱ", (0, -10)),
+        ("Back to the Future Part Ⅱ", (-150, -20)),
         ("Voyager", (0, -10)),
         ("Rendezvous with Rama", (0, -30)),
         ("§2 逃逸时代", (40, 0)),
         ("The Last of the Mohicans: A Narrative of 1757", (-400, 0)),
+        ("The War of the Worlds", (-200, 20)),
     ]
 
     for n, t in translations:
