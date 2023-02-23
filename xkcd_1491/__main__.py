@@ -30,17 +30,37 @@ with rc_context(xkcd):
         figsize=(10, 14),
     )
 
+    ax.text(
+        s="过去和未来的故事",
+        x=0.014,
+        y=0.987,
+        va="top",
+        transform=ax.transAxes,
+        fontweight="black",
+        fontsize=40,
+    )
+    ax.text(
+        s="github.com/YDX-2147483647/xkcd-1491",
+        y=0.984,
+        x=0.522,
+        va="top",
+        transform=ax.transAxes,
+        fontfamily="Source Han Sans CN",
+        fontstyle="oblique",
+        fontsize="small",
+    )
     ax.grid(visible=True)
 
     # X axis
-    ax.set_xlabel("released".title())
+    ax.set_xlabel("创作时间（公元纪年）")
+    ax.xaxis.set_label_position("top")
     ax.xaxis.set_tick_params(which="both", top=True, labeltop=True)
     ax.set_xscale(WarpScale(ax.xaxis, center=today, linear_widths=(50, 20)))
     ax.xaxis.set_major_locator(FixedLocator(past_years))
     ax.xaxis.set_minor_locator(MultipleLocator(base=20))
 
     # Y axis
-    ax.set_ylabel("setting - released".title())
+    ax.set_ylabel("(设定时间 − 创作时间) / 年")
     ax.set_ylim(-10e6, 31e6)  # Auto mode has too much margins
     ax.yaxis.set_tick_params(which="both", right=True, labelright=True)
     ax.set_yscale(WarpScale(ax.yaxis, linear_widths=(100, 20)))
