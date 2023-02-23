@@ -48,6 +48,8 @@ Now view `output.png`.
 
 - [三体档案馆](https://www.3body.com/front/archive/archive.html).
 
+- [History – Historical fiction | Wikipedia](https://en.wikipedia.org/wiki/Historical_fiction#History). ([CC BY-SA 3.0](https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License))
+
 ## Notes
 
 ### 方针

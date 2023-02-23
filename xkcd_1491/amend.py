@@ -21,6 +21,7 @@ def amend(texts: list[Annotation]) -> None:
         ("Voyager", (0, -10)),
         ("Rendezvous with Rama", (0, -30)),
         ("§2 逃逸时代", (40, 0)),
+        ("The Last of the Mohicans: A Narrative of 1757", (-400, 0)),
     ]
 
     for n, t in translations:

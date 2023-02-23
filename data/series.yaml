@@ -87,8 +87,8 @@
   series:
     - written_in: 1994
       set_in: [1947, 1966]
-- publication: 三国演义
-  author: 罗贯中
+- publication: 三國演義
+  author: 羅貫中
   series:
     - written_in: 1380
       set_in: [170, 280]
@@ -273,3 +273,42 @@
     - name: (film)
       written_in: 2008
       set_in: [1918, 2005]
+- publication: La Princesse de Clèves
+  author: Madame de La Fayette
+  series:
+    - written_in: 1678
+      set_in: [1558, 1559]
+- publication: Война и миръ／战争与和平
+  author: Лев Николаевич Толстой,
+  series:
+    - written_in: [1865, 1867]
+      set_in: [1805, 1820]
+- publication: A Tale of Two Cities
+  author: Charles Dickens
+  series:
+    - written_in: 1859
+      set_in: [1775, 1793]
+- publication: 儒林外史
+  author: 吳敬梓
+  series:
+    - written_in: 1750
+      set_in: [1487, 1595]
+- publication: "The Scarlet Letter: A Romance"
+  author: Nathaniel Hawthorne
+  series:
+    - written_in: 1850
+      set_in: [1642, 1649]
+- publication: "Buddenbrooks: Verfall einer Familie"
+  author: Paul Thomas Mann
+  series:
+    - written_in: 1901
+      set_in: [1835, 1877]
+- publication: 茶馆
+  author: 老舍
+  series:
+    - written_in: 1956
+      set_in: 1898
+    - written_in: 1956
+      set_in: 1920
+    - written_in: 1956
+      set_in: 1946
