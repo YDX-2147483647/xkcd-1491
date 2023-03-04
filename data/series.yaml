@@ -312,3 +312,10 @@
       set_in: 1920
     - written_in: 1956
       set_in: 1946
+- publication: Der König und der Puppenmacher
+  author: Wolfgang Jeschke
+  series:
+    - written_in: 1961
+      set_in: 1619
+    - written_in: 1961
+      set_in: 2819

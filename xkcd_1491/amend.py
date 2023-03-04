@@ -14,6 +14,7 @@ def amend(texts: list[Annotation]) -> None:
         ("The Sound of Music (film)", (-100, 0)),
         ("新世紀エヴァンゲリオン／Evangelion", (-200, -40)),
         ("The Cold Equations", (-100, -20)),
+        ("Der König und der Puppenmacher", (-300, -50)),
         ("風の谷のナウシカ", (0, 20)),
         ("S.A.C. 2045", (0, -40)),
         ("Ready Player Two", (-100, -10)),
@@ -22,7 +23,8 @@ def amend(texts: list[Annotation]) -> None:
         ("Rendezvous with Rama", (0, -30)),
         ("§2 逃逸时代", (40, 0)),
         ("The Last of the Mohicans: A Narrative of 1757", (-400, 0)),
-        ("The War of the Worlds", (-200, 20)),
+        ("Notre-Dame de Paris／巴黎圣母院", (-20, -40)),
+        ("The Time Machine", (-100, -50)),
     ]
 
     for n, t in translations:
