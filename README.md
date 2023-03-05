@@ -1,5 +1,7 @@
 # xkcd 1491: Stories of the Past and Future
 
+![](https://user-images.githubusercontent.com/73375426/222953430-c6130f5a-ba9b-4473-b9e6-7712fff90295.png)
+
 ## Getting started
 
 Clone this repo and install [pdm](https://pdm.fming.dev/latest/#installation).
@@ -65,23 +67,23 @@ Now view `output.png`.
 
 > 有一年的春天，他醉醺醺的在街上走，……
 >
-> <footer>——鲁迅《阿Q正传》，《呐喊》</footer>
+> <footer>——鲁迅《<a href='http://www.luxunmuseum.com.cn/cx/content.php?id=1481'>阿Q正传</a>》，《呐喊》</footer>
 
 > 那是一个我的幼时的夏夜，我躺在一株大桂树下的小板桌上乘凉，……
 >
-> <footer>——鲁迅《狗·猫·鼠》，《朝花夕拾》</footer>
+> <footer>——鲁迅《<a href='http://www.luxunmuseum.com.cn/cx/content.php?id=1523'>狗·猫·鼠</a>》，《朝花夕拾》</footer>
 
 > 有一年的秋天，我在寒石山的一个亲戚家里闲住。
 >
-> <footer>——鲁迅《孤独者》，《彷徨》</footer>
+> <footer>——鲁迅《<a href='http://www.luxunmuseum.com.cn/cx/content.php?id=1494'>孤独者</a>》，《彷徨》</footer>
 
 > 有一年的冬初，四叔家里要换女工，……
 >
-> <footer>——鲁迅《祝福》，《彷徨》</footer>
+> <footer>——鲁迅《<a href='http://www.luxunmuseum.com.cn/cx/content.php?id=1487'>祝福</a>》，《彷徨》</footer>
 
 > 一日就是这冬末夏初的时候，而且是夜间，我偶而得了闲暇，去访问爱罗先珂君。
 >
-> <footer>——鲁迅《鸭的戏剧》，《呐喊》</footer>
+> <footer>——鲁迅《<a href='http://www.luxunmuseum.com.cn/cx/content.php?id=1485'>鸭的戏剧</a>》，《呐喊》</footer>
 
 ### 具体问题
 
