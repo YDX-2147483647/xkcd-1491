@@ -83,7 +83,7 @@ Now view `output.png`.
 
 > 一日就是这冬末夏初的时候，而且是夜间，我偶而得了闲暇，去访问爱罗先珂君。
 >
-> <footer>——鲁迅《<a href='http://www.luxunmuseum.com.cn/cx/content.php?id=1485'>鸭的戏剧</a>》，《呐喊》</footer>
+> <footer>——鲁迅《<a href='http://www.luxunmuseum.com.cn/cx/content.php?id=1485'>鸭的喜剧</a>》，《呐喊》</footer>
 
 ### 具体问题
 
